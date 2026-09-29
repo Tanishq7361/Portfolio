@@ -3,104 +3,518 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Tanishq Shah — Full Stack Engineer</title>
+  <meta name="description" content="Portfolio of Tanishq Shah — Full Stack Developer & DA-IICT undergraduate.">
+  <link rel="icon" type="image/jpeg" href="img/log.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  
+  <!-- AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- header  -->
-  <header>
+
+  <!-- Custom Magnetic Cursor Follower -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
+
+  <!-- Ambient Glow Orbs -->
+  <div class="ambient-glow orb-1"></div>
+  <div class="ambient-glow orb-2"></div>
+  <div class="ambient-glow orb-3"></div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Navigation Bar -->
+  <header id="mainHeader">
     <div class="navbar">
-      <div class="boxes homer">
-        <a href="#home">Home</a>
+      <a href="#home" class="logo magnetic" data-sound="hover">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name">Tanishq</span>
+        <span class="logo-accent">.dev</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <div class="nav-status-pill">
+        <span class="pulse-dot"></span>
+        <span>Available for work</span>
       </div>
-      <div class="boxes aboutr">
-        <a href="#about">About</a>
-      </div>
-      <div class="boxes skillr">
-        <a href="#skills">Skills</a>
-      </div>
-      <div class="boxes edur">
-        <a href="#edu">Education</a>
-      </div>
-      <div class="boxes expr">
-        <a href="#exp">Work</a>
-      </div>
-      <div class="boxes contcr">
-        <a href="#contc">Contact</a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active magnetic" data-sound="hover">Home</a>
+        <a href="#about" class="nav-link magnetic" data-sound="hover">About</a>
+        <a href="#skills" class="nav-link magnetic" data-sound="hover">Skills</a>
+        <a href="#projects" class="nav-link magnetic" data-sound="hover">Projects</a>
+        <a href="#journey" class="nav-link magnetic" data-sound="hover">Journey</a>
+        <a href="#contact" class="nav-link magnetic" data-sound="hover">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Audio Synth Toggle -->
+        <button class="sound-toggle-btn magnetic" id="audioToggleBtn" title="Toggle Sci-Fi SFX" aria-label="Toggle Sound">
+          <i class="fas fa-volume-up" id="audioIcon"></i>
+          <span class="tooltip">Sound: ON</span>
+        </button>
+
+        <a href="#contact" class="nav-cta-btn magnetic" data-sound="click">
+          <span>Let's Talk</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+
+        <button class="hamburger magnetic" id="hamburger" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- home section -->
+  <!-- ==================== HERO ==================== -->
   <section class="home" id="home">
     <div id="particles-js"></div>
-    <div class="content">
-     <h2>Hi There,<br/> I am <span>Tanishq Shah</span></h2>
-     <p>i am a <span class="typing-text"></span></p>
-     <a href="#about" class="btn"><span>About Me</span>
-       <i class="fas fa-arrow-circle-down"></i>
-     </a>
-      <div class="social">
-        <div class="lists">
-          <div class="sicon"><a class="linkedin" aria-label="LinkedIn" href="https://www.linkedin.com/in/tanishq-shah-43825431b/" target="_blank"><i class="fab fa-linkedin"></i></a></div> 
-          <div class="sicon"><a class="github" aria-label="GitHub" href="https://github.com/Tanishq7361" target="_blank"><i class="fab fa-github"></i></a></div>
-          <div class="sicon"><a class="twitter" aria-label="Twitter" href="https://x.com/tanishq7361" target="_blank"><i class="fab fa-twitter"></i></a></div>
-          <div class="sicon"><a class="telegram" aria-label="Telegram" href="https://t.me/ashcatchup01920" target="_blank"><i class="fab fa-telegram-plane"></i></a></div>
-          <div class="sicon"><a class="instagram" aria-label="Instagram" href="https://www.instagram.com/tanishq_7307/"><i class="fab fa-instagram" target="_blank"></i></a></div>
+
+    <div class="hero-container">
+      <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+        <div class="hero-badge">
+          <span class="sparkle">✨</span>
+          <span>Full Stack Developer</span>
+          <span class="badge-dot">•</span>
+          <span>DA-IICT</span>
+        </div>
+
+        <h1 class="hero-title">
+          Engineering <span class="gradient-shimmer-text">Modern Web</span> Experiences.
+        </h1>
+
+        <div class="hero-typewriter">
+          <span class="typing-text" id="typingText"></span><span class="type-cursor"></span>
+        </div>
+
+        <p class="hero-subtext">
+          Undergraduate at <strong>DA-IICT</strong> building fast, clean, and scalable full-stack applications.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-laser magnetic" data-sound="click">
+            <span>Explore Work</span>
+            <i class="fas fa-arrow-down"></i>
+          </a>
+          <a href="#contact" class="btn btn-glass magnetic" data-sound="click">
+            <span>Get In Touch</span>
+            <i class="fas fa-paper-plane"></i>
+          </a>
+          
+          <div class="hero-social-row">
+            <a href="https://github.com/Tanishq7361" target="_blank" rel="noopener" class="social-circle magnetic" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tanishq-shah-43825431b/" target="_blank" rel="noopener" class="social-circle magnetic" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/tanishq7361" target="_blank" rel="noopener" class="social-circle magnetic" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://t.me/ashcatchup01920" target="_blank" rel="noopener" class="social-circle magnetic" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual with 3D Tilt & Rotating Laser Border -->
+      <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+        <div class="laser-card-wrapper" id="heroTiltCard">
+          <div class="laser-border-glow"></div>
+          
+          <div class="avatar-box">
+            <img src="./img/home1.jpg" alt="Tanishq Shah" class="avatar-photo">
+            
+            <div class="floating-pill pill-top" data-speed="1.5">
+              <i class="fas fa-graduation-cap"></i>
+              <span>DA-IICT B.Tech</span>
+            </div>
+
+            <div class="floating-pill pill-bottom" data-speed="2">
+              <i class="fas fa-bolt"></i>
+              <span>Full-Stack MERN</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-<div class="image">
-    <img draggable="false" class="tilt" src="./img/home1.jpg" alt="">
-</div>
-</section>
 
+    <!-- Live Animated Metrics Strip -->
+    <div class="stats-strip" data-aos="fade-up" data-aos-delay="200">
+      <div class="stat-box">
+        <div class="stat-number"><span class="stat-num" data-target="15">0</span>+</div>
+        <div class="stat-label">Projects Built</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number"><span class="stat-num" data-target="500">0</span>+</div>
+        <div class="stat-label">Git Commits</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number"><span class="stat-num" data-target="18">0</span>+</div>
+        <div class="stat-label">Tech Tools</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number"><span class="stat-num" data-target="100">0</span>%</div>
+        <div class="stat-label">Passion & Code</div>
+      </div>
+    </div>
+  </section>
 
-<!-- about section -->
-<section class="about" id="about">
-  <h2 class="heading"><i class="fas fa-user-alt"></i> About <span>Me</span></h2>
-  
-  <div class="image">
-      <img draggable="true" class="tilt" src="./img/home2.jpg" alt="">
-  </div>
-  <div class="content">
-      <h3>I'm Tanishq</h3>
-      <span class="tag">Full Stack Developer</span>
-      <p>I am a developer based in Ahmedabad, India. 
-        I am an Under Graduate at DA-IICT.
-        I am very passionate about improving my coding skills & developing applications & websites.
-        I build WebApps and Websites.
-        Working for myself to improve my skills.
-        Love to build Full-Stack clones. </p>
-      <div class="box-container">
-          <div class="box">
-            <p class="hel"><span> email : </span> tanishq7361@gmail.com</p>
-            <p class="hel"><span> place : </span> Ahmedabad, India - 380013</p>
+  <!-- ==================== ABOUT & INTERACTIVE TERMINAL ==================== -->
+  <section class="about" id="about">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">// 01. ABOUT</span>
+      <h2 class="section-title">Clean Logic & <span>Modern UI</span></h2>
+    </div>
+
+    <div class="about-grid">
+      <!-- Left: Laser Card Brief Bio -->
+      <div class="laser-box about-summary-box" data-aos="fade-right">
+        <div class="laser-border-glow"></div>
+        <div class="box-content">
+          <div class="author-header">
+            <img src="./img/home2.jpg" alt="Tanishq Shah" class="author-img">
+            <div>
+              <h3>Tanishq Shah</h3>
+              <span class="author-tag">DA-IICT Undergraduate</span>
+            </div>
           </div>
+
+          <p class="about-brief">
+            Developer based in <strong>Ahmedabad, India</strong>. Passionate about building high-performance web applications, full-stack clones, and responsive interfaces with fluid micro-animations.
+          </p>
+
+          <div class="quick-facts-row">
+            <div class="qfact"><i class="fas fa-map-pin"></i> Ahmedabad, India</div>
+            <div class="qfact"><i class="fas fa-university"></i> DA-IICT Gandhinagar</div>
+            <div class="qfact"><i class="fas fa-code"></i> Full Stack Web</div>
+          </div>
+
+          <div class="about-actions-row">
+            <a href="mailto:tanishq7361@gmail.com" class="btn btn-primary magnetic" data-sound="click">
+              <i class="fas fa-envelope"></i>
+              <span>Email Me</span>
+            </a>
+            <button class="btn btn-glass copy-email-btn magnetic" data-email="tanishq7361@gmail.com" data-sound="click">
+              <i class="fas fa-copy"></i>
+              <span>Copy Email</span>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="resumebtn">
-          <a href="" target="_blank" class="btn"><span>Resume</span>
-              <i class="fas fa-chevron-right"></i>
-          </a>
+
+      <!-- Right: Interactive Developer Terminal -->
+      <div class="laser-box terminal-box" data-aos="fade-left">
+        <div class="laser-border-glow"></div>
+        <div class="box-content terminal-inner">
+          <div class="terminal-bar">
+            <div class="term-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="term-title">tanishq@daiict: ~ (zsh)</span>
+            <span class="term-tag">CLI</span>
+          </div>
+
+          <div class="terminal-body" id="terminalBody">
+            <div class="term-line">
+              <span class="prompt">➜</span>
+              <span class="cmd">tanishq --status</span>
+            </div>
+            <div class="term-output">
+              Undergrad @ DA-IICT • Ready to build.<br>
+              Type <span class="term-hl">'help'</span> for interactive commands.
+            </div>
+            <div id="terminalHistory"></div>
+            <div class="term-input-row">
+              <span class="prompt">➜</span>
+              <input type="text" id="terminalInput" placeholder="try 'skills', 'projects', 'clear'..." autocomplete="off">
+            </div>
+          </div>
+
+          <div class="terminal-actions">
+            <span>Quick:</span>
+            <button class="tcmd-btn" data-cmd="skills">skills</button>
+            <button class="tcmd-btn" data-cmd="projects">projects</button>
+            <button class="tcmd-btn" data-cmd="contact">contact</button>
+            <button class="tcmd-btn" data-cmd="clear">clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section class="skills" id="skills">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">// 02. ARSENAL</span>
+      <h2 class="section-title">Skills & <span>Technologies</span></h2>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="skills-filters" data-aos="fade-up" data-aos-delay="100">
+      <button class="sfilter-btn active" data-filter="all">All Stack</button>
+      <button class="sfilter-btn" data-filter="frontend">Frontend</button>
+      <button class="sfilter-btn" data-filter="backend">Backend & DB</button>
+      <button class="sfilter-btn" data-filter="languages">Languages & Tools</button>
+    </div>
+
+    <!-- Skills Grid with Spotlight & Laser Border on Hover -->
+    <div class="skills-grid" id="skillsContainer" data-aos="fade-up" data-aos-delay="200">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section class="projects" id="projects">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">// 03. BUILDS</span>
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="laser-box project-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="laser-border-glow"></div>
+        <div class="box-content proj-inner">
+          <div class="proj-thumb">
+            <img src="./img/web1.jpeg" alt="Developer Portfolio" loading="lazy">
+            <div class="proj-overlay">
+              <a href="https://github.com/Tanishq7361/My-first-Webpage" target="_blank" rel="noopener" class="proj-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
+              <a href="#home" class="proj-action-btn preview-modal-trigger" data-pid="1" title="Inspect Breakdown"><i class="fas fa-eye"></i></a>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <h3>Developer Portfolio</h3>
+            <p>Personal showcase with Web Audio synth, laser borders, and 3D physics.</p>
+            <div class="proj-tags">
+              <span>JavaScript</span>
+              <span>Vanilla CSS</span>
+              <span>Web Audio</span>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <!-- Project 2 -->
+      <div class="laser-box project-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="laser-border-glow"></div>
+        <div class="box-content proj-inner">
+          <div class="proj-thumb">
+            <img src="./img/web2.jpeg" alt="Full Stack Web App" loading="lazy">
+            <div class="proj-overlay">
+              <a href="https://github.com/Tanishq7361" target="_blank" rel="noopener" class="proj-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
+              <button class="proj-action-btn preview-modal-trigger" data-pid="2" title="Inspect Breakdown"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <h3>Full-Stack Cloud Clone</h3>
+            <p>MERN stack architecture with JWT authentication and real-time MongoDB sync.</p>
+            <div class="proj-tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="laser-box project-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="laser-border-glow"></div>
+        <div class="box-content proj-inner">
+          <div class="proj-thumb">
+            <img src="./img/web3.jpeg" alt="Next.js Dashboard" loading="lazy">
+            <div class="proj-overlay">
+              <a href="https://github.com/Tanishq7361" target="_blank" rel="noopener" class="proj-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
+              <button class="proj-action-btn preview-modal-trigger" data-pid="3" title="Inspect Breakdown"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <h3>Analytics Dashboard</h3>
+            <p>Data visualization dashboard built with Next.js App Router and TypeScript.</p>
+            <div class="proj-tags">
+              <span>Next.js</span>
+              <span>TypeScript</span>
+              <span>Tailwind</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="laser-box project-card" data-aos="zoom-in" data-aos-delay="400">
+        <div class="laser-border-glow"></div>
+        <div class="box-content proj-inner">
+          <div class="proj-thumb">
+            <img src="./img/web4.jpg" alt="Interactive Experience" loading="lazy">
+            <div class="proj-overlay">
+              <a href="https://github.com/Tanishq7361" target="_blank" rel="noopener" class="proj-action-btn" title="GitHub Code"><i class="fab fa-github"></i></a>
+              <button class="proj-action-btn preview-modal-trigger" data-pid="4" title="Inspect Breakdown"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <h3>Interactive Brand Portal</h3>
+            <p>Creative website exploring micro-interactions, typography, and fluid CSS.</p>
+            <div class="proj-tags">
+              <span>HTML5</span>
+              <span>CSS Animations</span>
+              <span>UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== JOURNEY ==================== -->
+  <section class="journey" id="journey">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">// 04. MILESTONES</span>
+      <h2 class="section-title">Education & <span>Journey</span></h2>
+    </div>
+
+    <div class="journey-cards-grid">
+      <!-- Item 1 -->
+      <div class="laser-box journey-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="laser-border-glow"></div>
+        <div class="box-content j-inner">
+          <div class="j-header">
+            <span class="j-badge current">Current</span>
+            <span class="j-year">2024 – Present</span>
+          </div>
+          <h3>B.Tech in ICT</h3>
+          <h4><i class="fas fa-university"></i> DA-IICT, Gandhinagar</h4>
+          <p>Studying Computer Science, Data Structures, Algorithms, and Software Engineering.</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="laser-box journey-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="laser-border-glow"></div>
+        <div class="box-content j-inner">
+          <div class="j-header">
+            <span class="j-badge">Higher Secondary</span>
+            <span class="j-year">2022 – 2024</span>
+          </div>
+          <h3>12th Grade (Science)</h3>
+          <h4><i class="fas fa-school"></i> Science Stream (PCM)</h4>
+          <p>Physics, Chemistry, and Advanced Mathematics foundations for computing.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="laser-box journey-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="laser-border-glow"></div>
+        <div class="box-content j-inner">
+          <div class="j-header">
+            <span class="j-badge">Secondary</span>
+            <span class="j-year">2022</span>
+          </div>
+          <h3>10th Grade</h3>
+          <h4><i class="fas fa-school-flag"></i> High School Board</h4>
+          <p>Strong academic foundation with early passion for software development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section class="contact" id="contact">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-tag">// 05. REACH OUT</span>
+      <h2 class="section-title">Let's Build <span>Together</span></h2>
+    </div>
+
+    <div class="laser-box contact-wrapper-box" data-aos="fade-up">
+      <div class="laser-border-glow"></div>
+      <div class="box-content contact-inner-grid">
+        
+        <div class="contact-info-col">
+          <h3>Got a project or opportunity?</h3>
+          <p>Drop a message or email me directly:</p>
+
+          <button class="email-pill copy-email-btn magnetic" data-email="tanishq7361@gmail.com" data-sound="click">
+            <i class="fas fa-envelope"></i>
+            <span>tanishq7361@gmail.com</span>
+            <i class="fas fa-copy copy-icon"></i>
+          </button>
+
+          <div class="social-pills-row">
+            <a href="https://github.com/Tanishq7361" target="_blank" rel="noopener" class="spill magnetic"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/tanishq-shah-43825431b/" target="_blank" rel="noopener" class="spill magnetic"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://x.com/tanishq7361" target="_blank" rel="noopener" class="spill magnetic"><i class="fab fa-x-twitter"></i> Twitter</a>
+            <a href="https://t.me/ashcatchup01920" target="_blank" rel="noopener" class="spill magnetic"><i class="fab fa-telegram"></i> Telegram</a>
+          </div>
+        </div>
+
+        <form class="contact-form-col" id="contactForm">
+          <div class="form-row-2">
+            <input type="text" id="formName" required placeholder="Your Name">
+            <input type="email" id="formEmail" required placeholder="Your Email">
+          </div>
+          <input type="text" id="formSubject" required placeholder="Subject">
+          <textarea id="formMessage" rows="4" required placeholder="Your message..."></textarea>
+          
+          <button type="submit" class="btn btn-laser submit-btn magnetic" id="submitMessageBtn" data-sound="submit">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-wide">
+    <div class="footer-row">
+      <div class="f-logo logo">Tanishq<span>.dev</span></div>
+      <p>&copy; 2026 Tanishq Shah • Undergrad @ DA-IICT</p>
+      <a href="#home" class="to-top-btn magnetic"><i class="fas fa-arrow-up"></i> Top</a>
+    </div>
+  </footer>
+
+  <!-- Floating Quick Dock -->
+  <div class="floating-quick-dock" id="quickDock">
+    <a href="#home" class="dock-item" title="Home"><i class="fas fa-home"></i></a>
+    <a href="#about" class="dock-item" title="About"><i class="fas fa-user"></i></a>
+    <a href="#skills" class="dock-item" title="Skills"><i class="fas fa-code"></i></a>
+    <a href="#projects" class="dock-item" title="Projects"><i class="fas fa-folder"></i></a>
+    <a href="#contact" class="dock-item" title="Contact"><i class="fas fa-envelope"></i></a>
+    <button class="dock-item" id="dockScrollTop" title="Scroll To Top"><i class="fas fa-arrow-up"></i></button>
   </div>
-</section>
 
-<!-- skill section  -->
-<section class="skills" id="skills">
-
-  <h2 class="heading"><i class="fas fa-laptop-code"></i> Skills & <span>Abilities</span></h2>
-
-  <div class="container">
-    <div class="row" id="skillsContainer"></div>
+  <!-- Interactive Project Modal -->
+  <div class="project-modal-backdrop" id="projectModalBackdrop">
+    <div class="project-modal" id="projectModal">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
   </div>
-</section>
 
-<!-- for particles -->
-<script src="./js/particles.js"></script>
-<script src="./js/particlesinside.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="./js/particlesinside.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 </html>
